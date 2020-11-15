@@ -1,0 +1,12 @@
+﻿<p>@WordStatus</p>
+
+@code {
+    public string WordStatus { get; set; } //c_s_arp
+
+    public void CalculateWord(string answer, List<char> guessed)
+    {
+        var temp = answer.Select(x => (guessed.IndexOf(x) >= 0 ? x : '_')).ToArray();
+        WordStatus = string.Join(' ', temp);
+        this.StateHasChanged();
+    }
+}

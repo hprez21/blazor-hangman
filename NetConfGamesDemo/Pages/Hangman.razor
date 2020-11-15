@@ -1,0 +1,16 @@
+﻿@page "/hangman"
+
+<h1 class="text-center">Hangman!</h1>
+
+<div class="float-right">Errors: <span>@mistakes</span> de <span>@maxWrong</span></div>
+<div class="text-center">
+    <img src="@currentImage" />
+    <p>Adivina la palabra: </p>
+    <WordSpotlight @ref="WordSpotlight"/>
+    @foreach (var letter in letters)
+    {
+        <Letter LetterValue="letter" @ref="LetterComponents[letter]" OnPressed="() => HandleGuess(letter)"/>
+    }
+    <p>@message</p>
+    <button class="btn btn-info" @onclick="Reset">Reset</button>
+</div>
